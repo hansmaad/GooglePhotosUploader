@@ -1,0 +1,92 @@
+@use 'variables';
+@use 'colors';
+
+$-sidebar-width: variables.$sidebar-width;
+$-toolbar-height: variables.$toolbar-height;
+$-color-text: colors.$default-text;
+$-box-shadow: 0 1px 0 0 colors.$default-border;
+$-color-border: colors.$default-border;
+$-border: 1px solid $-color-border;
+$-color-text-hover: $-color-text;
+$-color-text-bg-hover: #007bff10;
+$-color-active-bg: #007bff20;
+$-color-active-border: #007bff40;
+
+.app-sidebar {
+  border-right: $-border;
+  color: $-color-text;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-sidebar-brand {
+  height: $-toolbar-height;
+  padding: 0.5em 1em;
+  box-shadow: 0 1px 0 0 $-color-border;
+  font-size: 1.4rem;
+  a, a:hover {
+    color: $-color-text;
+    text-decoration: none;
+  }
+}
+
+.app-sidebar-main {
+  flex: 1;
+}
+
+.app-sidebar-section {
+  padding: 0.5em 0;
+}
+
+
+.app-sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    max-width: $-sidebar-width;
+    white-space: nowrap;
+    line-height: 2.5em;
+    overflow: hidden;
+    padding: 0.5em 0;
+
+    &.app-active {
+      a,
+      a:hover {
+        background: $-color-active-bg;
+        border: 1px solid $-color-active-border;
+        border-radius: 5px;
+      }
+    }
+
+    a {
+      align-items: center;
+      border: 1px solid transparent;
+      color: $-color-text;
+      display: flex;
+      margin: 0 0.9em;
+      overflow: hidden;
+      padding: 0 1em 0 1.25em;
+      text-decoration: none;
+      text-overflow: ellipsis;
+
+      &:hover {
+        background: $-color-text-bg-hover;
+        color: $-color-text-hover;
+        text-decoration: none;
+      }
+
+      &:active,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    svg {
+        height: 18px;
+        margin-right: 1.05em;
+        width: 18px;
+    }
+  }
+}

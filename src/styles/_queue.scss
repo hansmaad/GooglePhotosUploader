@@ -1,0 +1,27 @@
+@use 'colors';
+
+$-border-color: colors.$default-border;
+$-color-text: colors.$default-text;
+
+.app-queue {
+    border: 1px solid $-border-color;
+    border-radius: 4px;
+    display: table;
+    font-size: 0.75em;
+    font-weight: 500;
+    width: 100%;
+    a, a:hover {
+        color: $-color-text;
+        text-decoration: none;
+    }
+    > div {
+        display: table-row;
+        > div {
+            border-bottom: 1px solid $-border-color;
+            display: table-cell;
+            padding: .2em .5em;
+            vertical-align: middle;
+        }
+
+    }
+}

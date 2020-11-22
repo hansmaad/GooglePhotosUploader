@@ -1,0 +1,6 @@
+<a *ngIf="profile" class="app-user-btn" routerLink="/user">
+  <img [src]="profile.image" alt="Logged in as {{profile.name}}" referrerpolicy="no-referrer">
+</a>
+<div *ngIf="!profile">
+  <button type="button" class="app-toolbar-btn" (click)="signIn()">Sign in</button>
+</div>

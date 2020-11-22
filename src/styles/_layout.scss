@@ -1,0 +1,37 @@
+@use 'variables';
+
+$-sidebar-width: variables.$sidebar-width;
+$-toolbar-height: variables.$toolbar-height;
+
+.app-app {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.app-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-toolbar {
+  left: $-sidebar-width;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.app-sidebar {
+  min-width: $-sidebar-width;
+  width: $-sidebar-width;
+}
+
+.app-content {
+  flex-grow: 1;
+  margin-top: $-toolbar-height;
+  overflow: auto;
+}

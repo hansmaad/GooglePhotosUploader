@@ -1,0 +1,70 @@
+@use 'colors';
+
+$-border-color: colors.$default-border;
+$-color-text: colors.$default-text;
+
+.app-folders {
+    font-size: 0.8em;
+}
+
+.app-folder {
+    // font-weight: 700;
+}
+
+.app-folder-content {
+    margin-left: 0.5em;
+}
+
+.app-file {
+    &:hover {
+        background: #eee;
+    }
+    cursor: pointer;
+}
+
+.app-file-browser-list {
+    border: 1px solid $-border-color;
+    border-radius: 4px;
+    a, a:hover {
+        color: $-color-text;
+        text-decoration: none;
+    }
+}
+
+.app-browser-entry {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $-border-color;
+    padding: .5em 0.75em;
+}
+
+.app-folder-entry, .app-file-entry {
+    font-weight: 500;
+    white-space: nowrap;
+    svg {
+        margin-right: .5em;
+    }
+}
+
+.app-file-entry svg {
+    color: #4d6aa7;
+}
+
+.app-folder-entry svg {
+    color: #a96c10;
+}
+
+
+.app-image-preview-container {
+    background: #fff;
+    box-shadow: 2px 2px 6px 3px rgb(0 0 0 / 15%);
+    bottom: 0;
+    padding: 0.5em;
+    position: fixed;
+    right: 0;
+}
+
+.app-image-preview img {
+    max-width: 40vw;
+    max-height: 60vh
+}

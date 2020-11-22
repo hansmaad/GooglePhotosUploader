@@ -1,0 +1,40 @@
+
+$-color-active-bg: #007bff20;
+$-color-active-border: #007bff40;
+
+.app-upload-albums {
+
+}
+
+.app-upload-album {
+    border: 1px solid #eee;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: .7em;
+    margin: 0 .5em .5em 0;
+    padding: .5em;
+    position: relative;
+    cursor: pointer;
+    width: 100px;
+    overflow: hidden;
+
+    &:hover {
+        background: #fafafa;
+    }
+    &.app-selected {
+        background: $-color-active-bg;
+        border-color: $-color-active-border;
+        font-weight: 700;
+    }
+    > div {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    svg {
+        position: absolute;
+        right: .5em;
+        top: .5em;
+        color: #aaa;
+    }
+}

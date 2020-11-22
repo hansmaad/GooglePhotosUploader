@@ -1,0 +1,31 @@
+<app-layout>
+  <ng-container sidebar>
+    <div class="app-sidebar-main pt-5">
+      <ul class="app-sidebar-nav">
+        <li routerLinkActive="app-active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/upload/queue" class="d-flex">
+            Uploads
+            <span class="flex-grow-1 text-right" *ngIf="queueLength | async">
+              ({{ queueLength | async }})
+            </span>
+          </a>
+        </li>
+        <li routerLinkActive="app-active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/upload">Select files</a>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+  <ng-container toolbar>
+    <div class="app-toolbar-btns">
+      <ng-content select="[toolbar]"></ng-content>
+      <div class="app-toolbar-fill"></div>
+      <app-user-btn></app-user-btn>
+    </div>
+  </ng-container>
+  <ng-container content>
+    <div class="container py-5">
+      <ng-content select="[content]"></ng-content>
+    </div>
+  </ng-container>
+</app-layout>

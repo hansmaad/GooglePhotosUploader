@@ -1,0 +1,84 @@
+@use 'variables';
+@use 'colors';
+
+$-sidebar-width: variables.$sidebar-width;
+$-toolbar-height: variables.$toolbar-height;
+
+$-color-text: colors.$default-text;
+$-box-shadow: 0 1px 0 0 colors.$default-border !default;
+
+.app-toolbar {
+  --toolbar-height: #{$-toolbar-height};
+  box-shadow: $-box-shadow;
+  color: $-color-text;
+  min-height: var(--toolbar-height);
+
+  svg {
+    vertical-align: middle;
+  }
+
+  &-fill {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  &-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-icon {
+    align-self: center;
+    display: inline-flex;
+
+    &:not(:last-child) {
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.app-toolbar-btns {
+  align-items: center;
+  display: flex;
+  height: var(--toolbar-height);
+  padding: 0 1em;
+
+  .app-toolbar-heading,
+  .app-toolbar-text,
+  .app-toolbar-btn {
+    color: $-color-text;
+    font-size: 1em;
+    font-weight: 700;
+    height: var(--toolbar-height);
+    line-height: var(--toolbar-height);
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .app-toolbar-text,
+  .app-toolbar-btn {
+    padding: 0 calc((var(--toolbar-height) - 1em)/2);
+  }
+
+  .app-toolbar-btn {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    justify-items: center;
+    margin: 0;
+    outline: 0;
+  }
+
+  .app-toolbar-btn[disabled] {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+
+.app-toolbar .app-btn {
+  margin: 0 0.25em;
+}

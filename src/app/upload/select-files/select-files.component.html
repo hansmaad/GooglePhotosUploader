@@ -1,0 +1,40 @@
+<app-upload-layout>
+  <ng-container content>
+    <ng-container *ngIf="!showSettings; else uploadSettings">
+      <button type="button" class="btn mr-2" (click)="openFolder()"
+        [ngClass]="{ 'btn-outline-primary': canSelect, 'btn-primary': !canSelect }">
+        Add folder
+      </button>
+      <button type="button" class="btn" (click)="showSettings = true" [disabled]="!canSelect"
+        [ngClass]="{ 'btn-outline-primary': !canSelect, 'btn-primary': canSelect }">
+        Upload
+      </button>
+    </ng-container>
+    <ng-template #uploadSettings>
+
+      <app-upload-settings (close)="upload($event)"></app-upload-settings>
+
+    </ng-template>
+
+    <div *ngIf="loading" class="my-5">Reading folder...</div>
+
+    <div class="app-folders py-4">
+      <div>
+        <div *ngFor="let folder of folders">
+          <div class="text-right">
+            <a href="javascript:void(0)" (click)="remove(folder)">Remove</a>
+          </div>
+          <app-file-browser [folder]="folder"></app-file-browser>
+        </div>
+      </div>
+
+      <div class="app-image-preview-container" *ngIf="imageFile">
+        <div>
+          <a href="javascript:void(0)" (click)="show()">Close</a>
+        </div>
+        <app-image-preview [file]="imageFile"></app-image-preview>
+      </div>
+    </div>
+
+  </ng-container>
+</app-upload-layout>

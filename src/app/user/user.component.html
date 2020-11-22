@@ -1,0 +1,41 @@
+<app-layout>
+  <ng-container sidebar>
+    <div class="app-sidebar-main pt-5">
+      <ul class="app-sidebar-nav">
+        <li>
+          <a routerLink="/upload">
+            Back
+          </a>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+  <ng-container toolbar>
+    <div class="app-toolbar-btns">
+    </div>
+  </ng-container>
+  <ng-container content>
+
+
+    <div class="vh-100 d-flex flex-column justify-content-center align-items-center">
+
+      <div *ngIf="!profile">
+        <button type="button" class="btn btn-primary" (click)="signIn()">Sign in</button>
+      </div>
+      <ng-container *ngIf="profile">
+
+          <a *ngIf="profile" class="app-user-btn" routerLink="/user" style="font-size: 2.5em">
+            <img [src]="profile.image" alt="Logged in as {{profile.name}}" referrerpolicy="no-referrer">
+          </a>
+          <p>
+            <strong>{{profile.name}}</strong>
+          </p>
+
+        <button type="button" class="btn btn-primary" (click)="signOut()">Sign out</button>
+      </ng-container>
+
+    </div>
+
+
+  </ng-container>
+</app-layout>

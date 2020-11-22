@@ -1,0 +1,31 @@
+<div class="app-browser-entry">
+  <input type="checkbox" [checked]="entry.selected" (click)="onSelect(entry, $event)">
+  <div class="app-folder-entry" [style.padding-left.em]="level">
+    <a href="javascript:void(0)" (click)="toggle()">
+      <svg *ngIf="showEntries; else closedFolder" appIcon="folderOpenOutline" size="20"></svg>
+      <ng-template #closedFolder>
+        <svg appIcon="folderOutline" size="20"></svg>
+      </ng-template>
+      {{entry.name}}
+      <span class="app-file-count">({{ fileCount }})</span>
+    </a>
+  </div>
+</div>
+<ng-container *ngIf="showEntries">
+
+  <ng-container *ngFor="let e of entry.entries">
+    <app-file-folder-entry *ngIf="e.isDirectory; else fileEntry" [entry]="e" [level]="level + 1" >
+    </app-file-folder-entry>
+    <ng-template #fileEntry>
+      <div class="app-browser-entry">
+        <input type="checkbox" [checked]="e.selected" (click)="onSelect(e, $event)">
+        <div class="app-file-entry" [style.padding-left.em]="level + 1">
+          <a href="javascript:void(0)" (click)="show(e)">
+            <svg appIcon="fileImageOutline" size="20"></svg>
+            {{e.name}}
+          </a>
+        </div>
+       </div>
+    </ng-template>
+  </ng-container>
+</ng-container>

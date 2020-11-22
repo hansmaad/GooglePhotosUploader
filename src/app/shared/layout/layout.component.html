@@ -1,0 +1,16 @@
+<div class="app-app">
+  <div class="app-sidebar">
+    <div class="app-sidebar-brand">
+      <a routerLink="/">Photos Uploader</a>
+    </div>
+    <ng-content select="[sidebar]"></ng-content>
+  </div>
+  <div class="app-main">
+    <div class="app-toolbar">
+      <ng-content select="[toolbar]"></ng-content>
+    </div>
+    <div class="app-content">
+      <ng-content select="[content]"></ng-content>
+    </div>
+  </div>
+</div>

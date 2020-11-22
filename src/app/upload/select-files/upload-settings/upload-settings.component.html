@@ -1,0 +1,49 @@
+<div class="mb-5">
+
+  <div class="form-group">
+    <label>Select album</label>
+    <div *ngIf="loadingAlbums">Loading albums...</div>
+    <div class="app-upload-albums">
+      <div class="app-upload-album" *ngFor="let album of albums" (click)="selectAlbum(album)"
+            [class.app-selected]="album == selectedAlbum">
+        <img [src]="album.coverPhotoBaseUrl | imageUrl:50" alt="">
+        <svg appIcon="lockOutline" *ngIf="!album.isWriteable"></svg>
+        <div>{{album.title}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control mb-2" [(ngModel)]="newAlbumName" *ngIf="creatingAlbum" placeholder="New album name...">
+    <button type="button" class="btn"
+            [ngClass]="{ 'btn-outline-primary': !creatingAlbum, 'btn-primary': creatingAlbum }"
+            (click)="createAlbum()" [disabled]="loadingAlbum">
+      Create album
+    </button>
+  </div>
+</div>
+
+<div class="row mb-5">
+  <div class="col-lg-6">
+    <div class="form-group">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="resize" [(ngModel)]="settings.resize">
+        <label class="form-check-label" for="resize">Resize before upload</label>
+      </div>
+    </div>
+
+    <div class="form-group" *ngIf="settings.resize">
+      <label for="album">Max. width/height</label>
+      <input class="form-control" type="number" [(ngModel)]="settings.maxSize" placeholders="">
+    </div>
+
+    <div class="mt-5">
+      <button type="button" class="btn btn-primary" (click)="close.emit(settings)">
+        Upload
+      </button>
+      <button type="button" class="btn btn-outline-primary ml-2" (click)="close.emit(null)">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

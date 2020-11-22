@@ -1,0 +1,54 @@
+<app-upload-layout>
+  <ng-container content>
+    <div class="d-flex mb-3">
+      <button type="button" class="btn btn-outline-primary mr-2" (click)="start()"
+        [disabled]="(uploadStatus$ | async)?.uploading">
+        Start upload
+      </button>
+      <button type="button" class="btn btn-outline-primary mr-2" (click)="pause()"
+        [disabled]="!(uploadStatus$ | async)?.uploading">
+        Pause upload
+      </button>
+      <div class="flex-fill"></div>
+      <button type="button" class="btn btn-outline-primary mr-2" (click)="clear()"
+        [disabled]="(uploadStatus$ | async)?.uploading">
+        Clear queue
+      </button>
+    </div>
+
+    <div class="app-queue my-3">
+      <div class="app-queue-item">
+        <div>
+          <strong>{{ totalFiles }} </strong> /
+          <strong>{{ pendingFiles }} files</strong>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="" *ngFor="let item of items$ | async">
+        <div>{{ item.name }}</div>
+        <div>{{ item.settings.albumName }}</div>
+        <div>
+          {{ item.originalDimensions }} / {{ item.uploadDimensions }}
+        </div>
+        <div>
+          {{ item.size | bytes:'MB' }} / {{ item.uploadSize | bytes:'MB' }}
+        </div>
+        <div [ngSwitch]="item.status">
+          <ng-container *ngSwitchCase="'uploading'">
+            {{ item.progress | number:'1.0-0' }} %
+          </ng-container>
+          <ng-container *ngSwitchCase="'done'">
+            ✓
+          </ng-container>
+          <ng-container *ngSwitchCase="'resizing'">
+            ⧖
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-upload-layout>
+
